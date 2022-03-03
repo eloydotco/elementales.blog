@@ -1,6 +1,6 @@
 .m-logo {
   display: inline-block;
-  height: 25px;
+  height: 40px;
 
   img {
     width: auto;
@@ -18,7 +18,7 @@
   }
 
   &.in-mobile-topbar {
-    height: 20px;
+    height: 40px;
     margin: 0 $mobile-space;
   }
 }
