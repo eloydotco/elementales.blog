@@ -4,7 +4,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
 const path = require('path');
 const fs = require('fs');
 //joining path of directory
-const directoryPath = path.join(__dirname);
+const directoryPath = path.join(process.cwd());
 //passsing directoryPath and callback function
 
 (async function main() {
@@ -31,7 +31,7 @@ const directoryPath = path.join(__dirname);
     });
 
     // Deploy it to the configured site
-    await api.themes.upload({ file: '../liebling-custom.zip' });
+    await api.themes.upload({ file: 'process.cwd()' + '/liebling-custom.zip' });
     console.log('Theme successfully uploaded!');
   } catch (err) {
     console.error(err);
