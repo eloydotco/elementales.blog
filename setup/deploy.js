@@ -6,12 +6,12 @@ const GhostAdminApi = require('@tryghost/admin-api');
     const api = new GhostAdminApi({
       url: process.env.GHOST_ADMIN_API_URL,
       key: process.env.GHOST_ADMIN_API_KEY,
-      version: 'canary'
+      version: 'v4',
     });
 
     // Deploy it to the configured site
-    await api.themes.upload({ file: '../liebling-custon.zip' });
-    console.log('Theme successfully uploaded.');
+    await api.themes.upload({ file: './liebling-custon.zip' });
+    console.log('Theme successfully uploaded!');
   } catch (err) {
     console.error(err);
     process.exit(1);

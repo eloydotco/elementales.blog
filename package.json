@@ -1,11 +1,52 @@
 {
   "name": "liebling-custom",
   "version": "1.0.1",
-  "description": "Beautiful and clean theme that is easy and comfortable to use.",
+  "description": "Custom theme for Ghost based on liebling",
   "author": {
     "email": "hi@eloy.co",
     "name": "Eloy Castelo Otero",
     "url": "https://eloy.co"
+  },
+  "scripts": {
+    "get-database": "curl https://raw.githubusercontent.com/eddiesigner/ghost-db/master/ghost.db -o ghost.db",
+    "dev": "NODE_ENV=development node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "docker-watch": "concurrently --names 'DOCKER,WEBPACK' --prefix-colors 'yellow,magenta' --kill-others \"docker-compose up\" \"npm run watch\"",
+    "deploy": "npm run production && node setup/deploy.js",
+    "production": "npm run build && npm run zip",
+    "build": "NODE_ENV=production node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "zip": "run-script-os",
+    "zip:win32": "7z a -r -x!.** -x!setup x!node_modules -x!src -x!package-lock.json -x!liebling-custon.zip liebling-custon.zip *",
+    "zip:default": "zip -r liebling-custon.zip ./* -x '.**' -x 'setup/**' -x 'node_modules/**' -x 'src/**' -x 'package-lock.json' -x 'liebling-custon.zip'"
+  },
+  "devDependencies": {
+    "@tryghost/admin-api": "~1.7.0",
+    "7zip": "~0.0.6",
+    "browser-sync-webpack-plugin": "~2.3.0",
+    "browser-sync": "~2.27.7",
+    "concurrently": "~6.0.0",
+    "dotenv": "~8.2.0",
+    "fs": "0.0.1-security",
+    "ghost-cli": "~1.18.1",
+    "laravel-mix": "~5.0.0",
+    "path": "~0.12.7",
+    "resolve-url-loader": "~3.1.2",
+    "run-script-os": "~1.1.6",
+    "sass-loader": "~8.0.2",
+    "sass": "~1.22.10",
+    "vue-template-compiler": "~2.6.14"
+  },
+  "dependencies": {
+    "aos": "~2.3.4",
+    "fitvids": "~2.1.1",
+    "fuse.js": "~6.5.3",
+    "headroom.js": "~0.12.0",
+    "jquery": "~3.6.0",
+    "medium-zoom": "~1.0.6",
+    "shave": "~2.5.10",
+    "swiper": "~8.0.6",
+    "tippy.js": "~5.2.1"
   },
   "config": {
     "posts_per_page": 10,
@@ -61,10 +102,5 @@
     "ghost": ">=4.0.0",
     "ghost-api": "v4"
   },
-  "keywords": [
-    "ghost",
-    "theme",
-    "ghost-theme"
-  ],
   "license": "MIT"
 }
