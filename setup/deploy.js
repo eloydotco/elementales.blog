@@ -9,7 +9,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
       version: 'v4',
     });
 
-    await api.themes.upload({ file: '../liebling-custom.zip' });
+    await api.themes.upload({ file: './liebling-custom.zip' });
     console.log('Theme successfully uploaded!');
   } catch (err) {
     console.error(err);
