@@ -21,7 +21,7 @@
     "zip:default": "zip -r liebling-custom.zip ./* -x '.**' -x 'setup/**' -x 'node_modules/**' -x 'src/**' -x 'package-lock.json' -x 'liebling-custom.zip'"
   },
   "devDependencies": {
-    "@tryghost/admin-api": "~1.8.0",
+    "@tryghost/admin-api": "~1.4.1",
     "7zip": "~0.0.6",
     "browser-sync-webpack-plugin": "~2.3.0",
     "browser-sync": "~2.27.7",
