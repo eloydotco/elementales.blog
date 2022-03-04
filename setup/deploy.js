@@ -18,7 +18,7 @@ const directoryPath = path.join(process.cwd(), 'liebling-custom.zip');
     console.log(directoryPath);
     console.log(process.cwd() + '/liebling-custom.zip');
 
-    fs.readdir(directoryPath, function (err, files) {
+    fs.readdir(process.cwd(), function (err, files) {
       //handling error
       if (err) {
         return console.log('Unable to scan directory: ' + err);
