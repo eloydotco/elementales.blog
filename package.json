@@ -80,7 +80,7 @@
       },
       "custom_cta_text": {
         "type": "text",
-        "default": "Subscribe",
+        "default": "Subscribete!",
         "group": "homepage"
       },
       "custom_cta_url": {
