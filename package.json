@@ -2,6 +2,12 @@
   "name": "liebling-custom",
   "version": "1.0.1",
   "description": "Custom theme for Ghost based on liebling",
+  "homepage": "https://www.elementales.blog",
+  "keywords": [
+    "ghost",
+    "ghost-theme",
+    "blog"
+  ],
   "author": {
     "email": "hi@eloy.co",
     "name": "Eloy Castelo Otero",
@@ -85,8 +91,7 @@
     }
   },
   "engines": {
-    "ghost": ">=4.0.0",
-    "ghost-api": "v4"
+    "ghost": ">=4.0.0"
   },
   "license": "MIT"
 }
