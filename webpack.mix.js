@@ -6,22 +6,6 @@ mix.options({
   },
 });
 
-mix.webpackConfig({
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: Config.babel(),
-          },
-        ],
-      },
-    ],
-  },
-});
-
 mix
   .js('src/js/helpers.js', 'js/')
   .js('src/js/app.js', 'js/')
@@ -30,24 +14,29 @@ mix
   .js('src/js/page.js', 'js/')
   .extract()
   .setResourceRoot('/assets')
-  .setPublicPath('./assets')
-  .sass('src/sass/app.scss', 'css/')
-  .sass('src/sass/home.scss', 'css/')
-  .sass('src/sass/listing.scss', 'css/')
-  .sass('src/sass/post.scss', 'css/')
-  .sass('src/sass/newsletter.scss', 'css/')
-  .sass('src/sass/tags.scss', 'css/')
-  .sass('src/sass/404.scss', 'css/')
+  .setPublicPath('./dist/assets')
+  .sass('src/styles/app.scss', 'css/')
+  .sass('src/styles/home.scss', 'css/')
+  .sass('src/styles/listing.scss', 'css/')
+  .sass('src/styles/post.scss', 'css/')
+  .sass('src/styles/newsletter.scss', 'css/')
+  .sass('src/styles/tags.scss', 'css/')
+  .sass('src/styles/404.scss', 'css/')
   .options({
     processCssUrls: false,
   })
-  .copy('src/sass/fonts/icomoon/*.*', './assets/fonts/icomoon/')
+  .copy('src/images/*.*', './dist/assets/images/')
+  .copy('src/styles/fonts/icomoon/*.*', './dist/assets/fonts/icomoon/')
   .copyDirectory(
-    'src/sass/fonts/source-sans-pro/',
-    './assets/fonts/source-sans-pro/'
+    'src/styles/fonts/source-sans-pro/',
+    './dist/assets/fonts/source-sans-pro/'
   )
-  .copy('src/js/vendor/content-api.min.js', './assets/js/vendor/')
+  .copy('src/js/vendor/content-api.min.js', './dist/assets/js/vendor/')
+  .copy('src/locales/*.*', './dist/locales/')
+  .copy('src/partials/*.hbs', './dist/partials/')
+  .copy('src/pages/*.hbs', './dist/')
+  .copy('package.json', './dist/')
   .browserSync({
     proxy: 'localhost:2368',
-    files: ['src/js/**/*.js', 'src/sass/**/*.scss', '**/*.hbs'],
+    files: ['src/js/**/*.js', 'src/styles/**/*.scss', '**/*.hbs'],
   });

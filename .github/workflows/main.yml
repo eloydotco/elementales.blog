@@ -17,7 +17,7 @@ jobs:
       - name: Build and zip
         run: npm run production
       - name: Deploy the theme
-        run: node setup/deploy.js
+        run: node scripts/deploy.js
         env:
           GHOST_ADMIN_API_URL: ${{ secrets.GHOST_ADMIN_API_URL }}
           GHOST_ADMIN_API_KEY: ${{ secrets.GHOST_ADMIN_API_KEY }}

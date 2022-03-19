@@ -1,19 +1,17 @@
-import $ from 'jquery';
-import Headroom from 'headroom.js';
-import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import shave from 'shave';
 import AOS from 'aos';
 import Fuse from 'fuse.js/dist/fuse.basic.esm.min.js';
-import Swiper, { FreeMode, A11y } from 'swiper';
-import 'swiper/swiper.min.css';
-import { isRTL, formatDate, isDarkMode, isMobile } from './helpers';
+import Headroom from 'headroom.js';
+import $ from 'jquery';
+import shave from 'shave';
+import Swiper, { A11y, FreeMode } from 'swiper';
+import 'swiper/css';
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import { formatDate, isDarkMode, isMobile, isRTL } from './helpers';
 
 $(() => {
   if (isRTL()) {
-    $('html')
-      .attr('dir', 'rtl')
-      .addClass('rtl');
+    $('html').attr('dir', 'rtl').addClass('rtl');
   }
 
   const $body = $('body');
@@ -78,7 +76,7 @@ $(() => {
     const api = new GhostContentAPI({
       url: host,
       key,
-      version: 'v4'
+      version: 'v4',
     });
     const allPosts = [];
     const fuseOptions = {
@@ -87,28 +85,28 @@ $(() => {
       findAllMatches: true,
       includeScore: true,
       minMatchCharLength: 2,
-      keys: ['title', 'custom_excerpt', 'tags.name']
+      keys: ['title', 'custom_excerpt', 'tags.name'],
     };
 
     api.posts
       .browse({
         limit: 'all',
         include: 'tags',
-        fields: 'id, title, url, published_at, custom_excerpt'
+        fields: 'id, title, url, published_at, custom_excerpt',
       })
-      .then(posts => {
+      .then((posts) => {
         for (let i = 0, len = posts.length; i < len; i++) {
           allPosts.push(posts[i]);
         }
 
         fuse = new Fuse(allPosts, fuseOptions);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
 
-  const toggleDesktopTopbarOverflow = disableOverflow => {
+  const toggleDesktopTopbarOverflow = (disableOverflow) => {
     if (!isMobile()) {
       if (disableOverflow) {
         $mainNav.addClass('toggle-overflow');
@@ -159,7 +157,7 @@ $(() => {
   $inputSearch.on('keyup', () => {
     if ($inputSearch.val().length > 0 && fuse) {
       const results = fuse.search($inputSearch.val());
-      const bestResults = results.filter(result => {
+      const bestResults = results.filter((result) => {
         if (result.score <= 0.5) {
           return result;
         }
@@ -213,7 +211,7 @@ $(() => {
     toggleDesktopTopbarOverflow(false);
   });
 
-  $(window).on('click', e => {
+  $(window).on('click', (e) => {
     if (submenuIsOpen) {
       if ($submenuOption && !$submenuOption.contains(e.target)) {
         submenuIsOpen = false;
@@ -222,7 +220,7 @@ $(() => {
     }
   });
 
-  $(document).on('keyup', e => {
+  $(document).on('keyup', (e) => {
     if (e.key === 'Escape' && $search.hasClass('opened')) {
       $closeSearch.trigger('click');
     }
@@ -244,7 +242,7 @@ $(() => {
     const headroom = new Headroom($header[0], {
       tolerance: {
         down: 10,
-        up: 20
+        up: 20,
       },
       offset: 15,
       onUnpin: () => {
@@ -258,7 +256,7 @@ $(() => {
             desktopSecondaryMenuTippy.hide();
           }
         }
-      }
+      },
     });
     headroom.init();
   }
@@ -270,17 +268,17 @@ $(() => {
       slidesPerView: 'auto',
       a11y: true,
       on: {
-        init: function() {
+        init: function () {
           shave('.js-recent-article-title', 50);
-        }
-      }
+        },
+      },
     });
   }
 
   if (typeof disableFadeAnimation === 'undefined' || !disableFadeAnimation) {
     AOS.init({
       once: true,
-      startEvent: 'DOMContentLoaded'
+      startEvent: 'DOMContentLoaded',
     });
   } else {
     $('[data-aos]').addClass('no-aos-animation');
@@ -301,7 +299,7 @@ $(() => {
       },
       onHidden() {
         toggleDesktopTopbarOverflow(false);
-      }
+      },
     });
   }
 
