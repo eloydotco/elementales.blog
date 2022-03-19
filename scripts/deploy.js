@@ -13,7 +13,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
       file: './liebling-custom.zip',
     });
     console.log('Theme successfully uploaded!');
-    if (!theme.active) {
+    if (!theme.active && false) {
       await api.themes.activate(theme.name);
       console.log(`Theme ${theme.name} successfully activated!`);
     }
