@@ -11,3 +11,4 @@ hint-report
 
 .DS_Store
 .idea
+.env
