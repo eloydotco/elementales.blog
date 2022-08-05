@@ -2,7 +2,7 @@
   "name": "liebling-custom",
   "version": "1.0.1",
   "description": "Custom theme for Ghost based on liebling",
-  "homepage": "https://www.elementales.blog",
+  "homepage": "https://elementales.blog",
   "keywords": [
     "ghost",
     "ghost-theme",
@@ -21,13 +21,13 @@
     "zip": "zip -r liebling-custom.zip ./dist/*"
   },
   "devDependencies": {
-    "@tryghost/admin-api": "~1.13.0",
+    "@tryghost/admin-api": "~1.13.1",
     "browser-sync-webpack-plugin": "~2.3.0",
     "browser-sync": "~2.27.10",
     "dotenv": "~16.0.1",
     "laravel-mix": "~6.0.49",
-    "sass": "~1.54.0",
-    "sass-loader": "~12.6.0"
+    "sass": "~1.54.3",
+    "sass-loader": "~13.0.2"
   },
   "dependencies": {
     "aos": "~2.3.4",
@@ -36,7 +36,7 @@
     "headroom.js": "~0.12.0",
     "jquery": "~3.6.0",
     "medium-zoom": "~1.0.6",
-    "shave": "~4.0.0",
+    "shave": "~5.0.0",
     "swiper": "~8.3.2",
     "tippy.js": "~6.3.7"
   },

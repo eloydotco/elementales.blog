@@ -6,7 +6,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
     const api = new GhostAdminApi({
       url: process.env.GHOST_ADMIN_API_URL,
       key: process.env.GHOST_ADMIN_API_KEY,
-      version: 'v4',
+      version: 'v5',
     });
 
     const theme = await api.themes.upload({
